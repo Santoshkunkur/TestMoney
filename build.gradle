@@ -1,0 +1,42 @@
+
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Cucumber dependencies
+    implementation 'io.cucumber:cucumber-java:7.0.0'
+    implementation 'io.cucumber:cucumber-junit:7.0.0'
+    implementation 'io.cucumber:cucumber-core:7.0.0'
+    implementation 'io.cucumber:cucumber-gherkin:7.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'org.seleniumhq.selenium:selenium-server:3.141.59'
+    implementation 'com.aventstack:extentreports:5.0.8'
+    implementation 'com.vimalselvam:cucumber-extentsreport:3.1.1'
+    testImplementation 'org.testng:testng:6.14.3'
+
+
+}
+
+task runCucumberTests(type: JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    main = 'io.cucumber.core.cli.Main'
+    args = [
+            '--plugin', 'pretty',
+            '--plugin', 'html:target/cucumber-reports.html',
+            '--glue', 'com.example.steps',
+            'src/test/resources/features'
+    ]
+}
+
+test {
+    useJUnit()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
