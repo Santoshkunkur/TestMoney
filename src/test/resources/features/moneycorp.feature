@@ -10,6 +10,5 @@ Feature: Moneycorp website testing
     And User search for international payments
     Then User validate international payments page
     And User verify all articles has link starts with en-us
-#    And User close browser
 
 

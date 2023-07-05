@@ -63,31 +63,15 @@ public class StepDefinitions {
         homePage.verifyInternationalPaymentsPage();
     }
 
-
-    @And("click show more results until not available")
-    public void clickShowMoreResultsUntilNotAvailable() throws InterruptedException {
-
-    }
-
-
     @Then("User verify all articles has link starts with en-us")
     public void userVerifyAllArticlesHasLinkStartingWithENUS() throws Exception {
         homePage.clickUntilNotVisibile();
         homePage.validateLinks();
     }
 
-    @And("i close browser")
-    public void iCloseBrowser() {
-        driver.quit();
-    }
-
 
     @After
     public void tearDown() {
-//        // Quit the WebDriver instance after each scenario
-//        if (driver != null) {
-//            driver.quit();
-//        }
         SeleniumDriverSingleton.quitDriver();
     }
 
